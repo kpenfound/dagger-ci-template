@@ -1,0 +1,20 @@
+version: 2.1
+jobs:
+  test:
+    docker:
+      - image: cimg/go:1.21
+    environment:
+      DAGGER_MODULE: github.com/<foo>/daggerverse/<bar>
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Install Dagger CLI
+          command: cd /usr/local && { curl -L https://dl.dagger.io/dagger/install.sh | sudo sh; cd -; }
+      - run:
+          name: Dagger Test Pipeline
+          command: dagger call --progress plain <args>
+workflows:
+  test:
+    jobs:
+      - test

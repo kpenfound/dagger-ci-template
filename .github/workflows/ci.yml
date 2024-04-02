@@ -1,0 +1,17 @@
+name: ci
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  ci:
+    name: ci
+    runs-on: ubuntu-latest
+    steps:
+      - name: CI
+        uses: dagger/dagger-for-github@v5
+        with:
+          args: <args>
+          module: github.com/<foo>/daggerverse/<bar>
+          version: "0.10.3"
+
