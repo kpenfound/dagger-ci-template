@@ -13,5 +13,4 @@ jobs:
         with:
           args: <args>
           module: github.com/<foo>/daggerverse/<bar>
-          version: "0.10.3"
 
